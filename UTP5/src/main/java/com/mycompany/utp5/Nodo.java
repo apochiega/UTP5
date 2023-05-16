@@ -11,7 +11,9 @@ import java.util.ArrayList;
  * @author pijua
  */
 public class Nodo {
+
     String nombre;
+
     ArrayList<Nodo> hijos;
 
     public Nodo(String nombre) {

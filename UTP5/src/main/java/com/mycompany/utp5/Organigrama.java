@@ -9,6 +9,7 @@ package com.mycompany.utp5;
  * @author pijua
  */
 public class Organigrama {
+
     Nodo raiz;
 
     public Organigrama(String nombreRaiz) {
@@ -18,14 +19,19 @@ public class Organigrama {
     public void agregarNodo(String nombreNodo, String nombrePadre) {
         Nodo nodo = new Nodo(nombreNodo);
         Nodo padre = buscarNodo(raiz, nombrePadre);
-        
+
         if (padre != null) {
             padre.agregarHijo(nodo);
         }
-        
-        
+
     }
 
+    /**
+     * Función recursiva que busca si algun nodo coincide en nombre con el ingreso.
+     * @param elementoActual Elemento a partir del que se busca.
+     * @param nombre Nombre que se va a buscar.
+     * @return Elemento encontrado o Null si no hay coincidencias.
+     */
     private Nodo buscarNodo(Nodo elementoActual, String nombre) {
         if (elementoActual.nombre.equals(nombre)) {
             return elementoActual;
@@ -33,6 +39,7 @@ public class Organigrama {
 
         for (Nodo hijo : elementoActual.obtenerHijos()) {
             Nodo resultado = buscarNodo(hijo, nombre);
+            //SOLO SI alguna de las llamadas recursivas coincide con la búsqueda.
             if (resultado != null) {
                 return resultado;
             }
@@ -52,5 +59,4 @@ public class Organigrama {
         }
     }
 
-   
 }
